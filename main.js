@@ -1,27 +1,13 @@
-let number = prompt("Введите число:")
-
-if (number % 2 === 0) {
-  if (number % 4 === 0) {
-    console.log("Число четное и делится на 4")
-  } else {
-    console.log("Число четное, но не делится на 4")
-  }
-} else {
-  if (number % 9 === 0) {
-    console.log("Число нечетное и делится на 9")
-  } else {
-    console.log("Число нечетное и не делится на 9")
-  }
+// ! Задание №1
+function heron(a, b, c) {
+  var s = (a + b + c) / 2
+  return Math.sqrt(s * (s - a) * (s - b) * (s - c))
 }
-
-for (let i = 1; i <= 20; i++) {
-  if (i % 3 === 0 && i % 5 === 0) {
-    console.log("FizzBuzz")
-  } else if (i % 3 === 0) {
-    console.log("Fizz")
-  } else if (i % 5 === 0) {
-    console.log("Buzz")
-  } else {
-    console.log(i)
-  }
+console.log(heron(3, 4, 5))
+// ! Задание №2
+function Kata(a, e) {
+  let i = a.indexOf(e)
+  return i + 1 ? i : "Not found"
 }
+console.log(Kata([1, 2, 3], 2))
+console.log(Kata([1, 2, 3], 5))
