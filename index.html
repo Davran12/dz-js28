@@ -1,22 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DOM Homework</title>
+    <title>Переключение темы</title>
+    <style>
+      /* Базовые стили (можно менять) */
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 20px;
+        transition: background 0.3s, color 0.3s;
+      }
+      /* Классы для тем */
+      .light-theme {
+        background: white;
+        color: black;
+      }
+      .dark-theme {
+        background: #333;
+        color: white;
+      }
+    </style>
   </head>
-  <body>
-    <ul>
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-      <li>Item 4</li>
-    </ul>
-    <div>
-      <p>Hello</p>
-      <p>Click me</p>
-      <p>Another text</p>
-    </div>
-    <script src="./script.js"></script>
+  <body class="light-theme">
+    <h2>Переключение темы</h2>
+
+    <!-- Условия задания (раскомментировать для работы) -->
+    <!-- 
+    1. При нажатии на кнопку #themeToggle тема страницы меняется (light-theme ↔ dark-theme).
+    2. Текст кнопки должен меняться:
+        - Если тема светлая, кнопка говорит "Тёмная тема".
+        - Если тёмная — "Светлая тема".
+    3. Сохранение темы (localStorage) НЕ требуется.
+  -->
+
+    <button id="themeToggle">Тёмная тема</button>
+    <p>Пример текста для демонстрации темы. Попробуйте нажать на кнопку!</p>
+
+    <!-- Скрипт писать здесь или в отдельном файле -->
+    <script>
+      const themeToggleButton = document.getElementById("themeToggle")
+      const body = document.body
+
+      themeToggleButton.addEventListener("click", () => {
+        body.classList.toggle("dark-theme")
+        body.classList.toggle("light-theme")
+
+        if (body.classList.contains("dark-theme")) {
+          themeToggleButton.textContent = "Светлая тема"
+        } else {
+          themeToggleButton.textContent = "Тёмная тема"
+        }
+      })
+    </script>
   </body>
 </html>
