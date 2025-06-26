@@ -37,4 +37,4 @@ function timeoutPromise(promise, ms) {
 
 const slowPromise = new Promise((res) => setTimeout(() => res("Успех!"), 2000))
 
-timeoutPromise(slowPromise, 1500).then(console.log).catch(console.error)
+timeoutPromise(slowPromise, 2500).then(console.log).catch(console.error)
