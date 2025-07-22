@@ -1,59 +1,35 @@
-async function getUserPosts(userId) {
-  const userResponse = await fetch(
-    `https://jsonplaceholder.typicode.com/users/${userId}`
-  )
+const translations = [
+  ["hello", "привет"],
+  ["world", "мир"],
+  ["apple", "яблоко"],
+]
 
-  if (!userResponse.ok) {
-    throw new Error("User not found")
-  }
+const dictionary = new Map(translations)
+console.log(dictionary.get("apple"))
+//--------------------------
+const allowedUsers = new Set(["alice", "bob", "charlie"])
 
-  const user = await userResponse.json()
+console.log(allowedUsers.has("dave"))
+//--------------------------------------
+const words = ["apple", "banana", "apple", "orange", "banana", "apple"]
+const wordCount = new Map()
 
-  const postsResponse = await fetch(
-    `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
-  )
-  const posts = await postsResponse.json()
+for (const word of words) {
+  wordCount.set(word, (wordCount.get(word) || 0) + 1)
+}
 
-  return {
-    user,
-    posts,
+console.log(wordCount)
+
+//-----------------------------------
+const userIds = [101, 102, 103, 101, 104, 102]
+const seen = new Set()
+const newUsers = []
+
+for (const id of userIds) {
+  if (!seen.has(id)) {
+    seen.add(id)
+    newUsers.push(id)
   }
 }
 
-getUserPosts(5).then(console.log).catch(console.error)
-
-//!--------------------------------
-async function findLongestPost(userId) {
-  const response = await fetch(
-    `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
-  )
-  const posts = await response.json()
-
-  if (!posts.length) {
-    throw new Error("No posts found")
-  }
-
-  let longest = posts[0]
-
-  for (const post of posts) {
-    if (post.body.length > longest.body.length) {
-      longest = post
-    }
-  }
-
-  return {
-    id: longest.id,
-    title: longest.title,
-    body: longest.body,
-    length: longest.body.length,
-  }
-}
-
-;(async () => {
-  try {
-    const longestPost = await findLongestPost(1)
-    console.log(longestPost)
-  } catch (error) {
-    console.error(error)
-  }
-})()
+console.log(newUsers)
